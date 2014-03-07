@@ -40,7 +40,7 @@ public class MainClass {
         String idList = "52cb0d12e6db0a043c125fe4";
         String idMember = "51f0873a21aea82b18002bfc";
                 
-        System.out.println(trello.getBoard(idBoard));
+        System.out.println(trello.getBoardByIdAction(idAction));
         
     }
     
