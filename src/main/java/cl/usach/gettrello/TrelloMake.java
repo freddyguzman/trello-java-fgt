@@ -105,7 +105,7 @@ public class TrelloMake implements Trello {
     
     
     public List<ActionElement> getActions(String idBoard) throws IOException, JSONException, ParseException{
-        ActionMethods action = new ActionMethods();
+        ActionMethods action = new ActionMethods(appTrello);
         List<ActionElement> actionElements = action.getActions(idBoard);
         return actionElements;
     }
@@ -119,7 +119,7 @@ public class TrelloMake implements Trello {
      * @throws ParseException
      */
     public ActionElement getAction(String idAction) throws IOException, JSONException, ParseException{
-        ActionMethods action = new ActionMethods();
+        ActionMethods action = new ActionMethods(appTrello);
         ActionElement actionElement = action.getAction(idAction);
         return actionElement;
     }
@@ -132,7 +132,7 @@ public class TrelloMake implements Trello {
      * @throws ParseException
      */
     public List<ActionElement> getActionsByIdCard(String idCard) throws IOException, ParseException{
-        ActionMethods action = new ActionMethods();
+        ActionMethods action = new ActionMethods(appTrello);
         List<ActionElement> actionElements = action.getActionsByIdCard(idCard);
         return actionElements;
     }
@@ -145,7 +145,7 @@ public class TrelloMake implements Trello {
      * @throws ParseException
      */
     public List<ActionElement> getActionsByIdList(String idList) throws IOException, ParseException{
-        ActionMethods action = new ActionMethods();
+        ActionMethods action = new ActionMethods(appTrello);
         List<ActionElement> actionElements = action.getActionsByIdList(idList);
         return actionElements;
     }
@@ -158,7 +158,7 @@ public class TrelloMake implements Trello {
      * @throws ParseException
      */
     public List<ActionElement> getActionsByIdMember(String idMember) throws IOException, ParseException{
-        ActionMethods action = new ActionMethods();
+        ActionMethods action = new ActionMethods(appTrello);
         List<ActionElement> actionElements = action.getActionsByIdMember(idMember);
         return actionElements;
     }
@@ -175,7 +175,7 @@ public class TrelloMake implements Trello {
     
     
     public List<CardElement> getCards(String idBoard) throws IOException, ParseException{
-        CardMethods card = new CardMethods();
+        CardMethods card = new CardMethods(appTrello);
         List<CardElement> cardElements = card.getCards(idBoard);
         return cardElements;
     }
@@ -189,7 +189,7 @@ public class TrelloMake implements Trello {
      * @throws ParseException
      */
     public CardElement getCard(String idBoard, String idCard) throws IOException, ParseException{
-        CardMethods card = new CardMethods();
+        CardMethods card = new CardMethods(appTrello);
         CardElement cardElement = card.getCard(idBoard, idCard);
         return cardElement;
     }
@@ -203,7 +203,7 @@ public class TrelloMake implements Trello {
      * @throws ParseException
      */
     public List<CardElement> getCards(String idBoard, String idMember) throws IOException, ParseException{
-        CardMethods card = new CardMethods();
+        CardMethods card = new CardMethods(appTrello);
         List<CardElement> cardElements = card.getCards(idBoard,idMember);
         return cardElements;
     }
@@ -216,7 +216,7 @@ public class TrelloMake implements Trello {
      * @throws ParseException
      */
     public CardElement getCardByIdAction(String idAction) throws IOException, ParseException{
-        CardMethods card = new CardMethods();
+        CardMethods card = new CardMethods(appTrello);
         CardElement cardElement = card.getCardByIdAction(idAction);
         return cardElement;
     }
@@ -229,7 +229,7 @@ public class TrelloMake implements Trello {
      * @throws ParseException
      */
     public CardElement getCard(String idCard) throws IOException, ParseException{
-        CardMethods card = new CardMethods();
+        CardMethods card = new CardMethods(appTrello);
         CardElement cardElement = card.getCard(idCard);
         return cardElement;        
     }
@@ -242,7 +242,7 @@ public class TrelloMake implements Trello {
      * @throws ParseException
      */
     public List<CardElement> getCardsByIdList(String idList) throws IOException, ParseException{
-        CardMethods card = new CardMethods();
+        CardMethods card = new CardMethods(appTrello);
         List<CardElement> cardElements = card.getCardsByIdList(idList);
         return cardElements;
     }
@@ -255,7 +255,7 @@ public class TrelloMake implements Trello {
      * @throws ParseException
      */
     public List<CardElement> getCardsByIdMember(String idMember) throws IOException, ParseException{
-        CardMethods card = new CardMethods();
+        CardMethods card = new CardMethods(appTrello);
         List<CardElement> cardElements = card.getCardsByIdMember(idMember);
         return cardElements;
     }
@@ -268,7 +268,7 @@ public class TrelloMake implements Trello {
      * @throws IOException
      */    
     public List<ListElement> getLists(String idBoard) throws IOException{
-        ListMethods listMethods = new ListMethods();
+        ListMethods listMethods = new ListMethods(appTrello);
         List<ListElement> listElements = listMethods.getLists(idBoard);
         return listElements;
     }
@@ -280,7 +280,7 @@ public class TrelloMake implements Trello {
      * @throws IOException
      */
     public ListElement getListByIdCard(String idCard) throws IOException{
-        ListMethods listMethods = new ListMethods();
+        ListMethods listMethods = new ListMethods(appTrello);
         ListElement listElement = listMethods.getListByIdCard(idCard);
         return listElement;
     }
@@ -292,7 +292,7 @@ public class TrelloMake implements Trello {
      * @throws IOException
      */
     public ListElement getList(String idList) throws IOException{
-        ListMethods listMethods = new ListMethods();
+        ListMethods listMethods = new ListMethods(appTrello);
         ListElement listElement = listMethods.getList(idList);
         return listElement;
     }
@@ -308,7 +308,7 @@ public class TrelloMake implements Trello {
     
     
     public List<MemberElement> getMembers (String idBoard) throws IOException{
-        MemberMethods memberMethods = new MemberMethods();
+        MemberMethods memberMethods = new MemberMethods(appTrello);
         List<MemberElement> memberElements = memberMethods.getMembers(idBoard);
         return memberElements;
     }
@@ -320,7 +320,7 @@ public class TrelloMake implements Trello {
      * @throws IOException
      */
     public MemberElement getMemberCreator(String idAction) throws IOException{
-        MemberMethods memberMethods = new MemberMethods();
+        MemberMethods memberMethods = new MemberMethods(appTrello);
         MemberElement memberElement = memberMethods.getMemberCreator(idAction);
         return memberElement;
     }
@@ -332,7 +332,7 @@ public class TrelloMake implements Trello {
      * @throws IOException
      */
     public List<MemberElement> getMembersByIdCard (String idCard) throws IOException{
-        MemberMethods memberMethods = new MemberMethods();
+        MemberMethods memberMethods = new MemberMethods(appTrello);
         List<MemberElement> memberElements = memberMethods.getMembersByIdCard(idCard);
         return memberElements;
     }
@@ -344,7 +344,7 @@ public class TrelloMake implements Trello {
      * @throws IOException
      */
     public MemberElement getMember(String idMember) throws IOException{
-        MemberMethods memberMethods = new MemberMethods();
+        MemberMethods memberMethods = new MemberMethods(appTrello);
         MemberElement memberElement = memberMethods.getMember(idMember);
         return memberElement;
     }

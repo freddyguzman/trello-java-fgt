@@ -23,6 +23,11 @@ import org.json.JSONObject;
 public class MemberMethods extends AppTrello{
     
     String url;
+    AppTrello appTrello;
+    
+    public MemberMethods(AppTrello appTrello){
+        this.appTrello = appTrello;
+    }
     
     /**
      * Obtener la lista de miembros a través del identificador del tablero
@@ -32,7 +37,7 @@ public class MemberMethods extends AppTrello{
      * @see https://trello.com/docs/api/board/index.html#get-1-boards-board-id-members
      */
     public List<MemberElement> getMembers (String idBoard) throws IOException{
-        url = getUrlAPIbase() + "board/" + idBoard + "/members?" + getArgAccess();
+        url = appTrello.getUrlAPIbase() + "board/" + idBoard + "/members?" + appTrello.getArgAccess();
         System.out.println(url);
         HTTP http = new HTTP(url);
         JSONArray jsona;
@@ -58,7 +63,7 @@ public class MemberMethods extends AppTrello{
      * @see https://trello.com/docs/api/action/index.html#get-1-actions-idaction-membercreator
      */
     public MemberElement getMemberCreator(String idAction) throws IOException{
-        url = getUrlAPIbase() + "actions/" + idAction + "/memberCreator?" + getArgAccess();
+        url = appTrello.getUrlAPIbase() + "actions/" + idAction + "/memberCreator?" + appTrello.getArgAccess();
         System.out.println(url);
         HTTP http = new HTTP(url);
         JSONObject jsonO;
@@ -81,7 +86,7 @@ public class MemberMethods extends AppTrello{
      * @see https://trello.com/docs/api/card/index.html#get-1-cards-card-id-or-shortlink-members
      */
     public List<MemberElement> getMembersByIdCard (String idCard) throws IOException{
-        url = getUrlAPIbase() + "cards/" + idCard + "/members?" + getArgAccess();
+        url = appTrello.getUrlAPIbase() + "cards/" + idCard + "/members?" + appTrello.getArgAccess();
         System.out.println(url);
         HTTP http = new HTTP(url);
         JSONArray jsona;
@@ -107,7 +112,7 @@ public class MemberMethods extends AppTrello{
      * @see https://trello.com/docs/api/member/index.html#get-1-members-idmember-or-username
      */
     public MemberElement getMember(String idMember) throws IOException{
-        url = getUrlAPIbase() + "members/" + idMember + "?" + getArgAccess();
+        url = appTrello.getUrlAPIbase() + "members/" + idMember + "?" + appTrello.getArgAccess();
         System.out.println(url);
         HTTP http = new HTTP(url);
         JSONObject jsonO;

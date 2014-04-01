@@ -24,6 +24,11 @@ import org.json.JSONObject;
 public class CardMethods extends AppTrello{
     
     String url;
+    AppTrello appTrello;
+
+    public CardMethods(AppTrello appTrello) {
+        this.appTrello = appTrello;
+    }   
     
     /**
      * Obtener lista de Cartas a través del identificador del tablero
@@ -34,7 +39,7 @@ public class CardMethods extends AppTrello{
      * @see https://trello.com/docs/api/board/index.html#get-1-boards-board-id-cards
      */
     public List<CardElement> getCards(String idBoard) throws IOException, ParseException{
-        url = getUrlAPIbase() + "boards/" + idBoard + "/cards?" + getArgAccess();
+        url = appTrello.getUrlAPIbase() + "boards/" + idBoard + "/cards?" + appTrello.getArgAccess();
         System.out.println(url);
         HTTP http = new HTTP(url);
         JSONArray jsona;
@@ -62,7 +67,7 @@ public class CardMethods extends AppTrello{
      * @see https://trello.com/docs/api/board/index.html#get-1-boards-board-id-cards-idcard
      */
     public CardElement getCard(String idBoard, String idCard) throws IOException, ParseException{
-        url = getUrlAPIbase() + "boards/" + idBoard + "/cards/" + idCard + "?" + getArgAccess();
+        url = appTrello.getUrlAPIbase() + "boards/" + idBoard + "/cards/" + idCard + "?" + appTrello.getArgAccess();
         System.out.println(url);
         HTTP http = new HTTP(url);
         JSONObject jsonO;
@@ -86,7 +91,7 @@ public class CardMethods extends AppTrello{
      * @see https://trello.com/docs/api/board/index.html#get-1-boards-board-id-members-idmember-cards
      */
     public List<CardElement> getCards(String idBoard, String idMember) throws IOException, ParseException{
-        url = getUrlAPIbase() + "boards/" + idBoard + "/members/" + idMember + "/cards?" + getArgAccess();
+        url = appTrello.getUrlAPIbase() + "boards/" + idBoard + "/members/" + idMember + "/cards?" + appTrello.getArgAccess();
         System.out.println(url);
         HTTP http = new HTTP(url);
         JSONArray jsona;
@@ -113,7 +118,7 @@ public class CardMethods extends AppTrello{
      * @see https://trello.com/docs/api/action/index.html#get-1-actions-idaction-card
      */
     public CardElement getCardByIdAction(String idAction) throws IOException, ParseException{
-        url = getUrlAPIbase() + "actions/" + idAction + "/card?" + getArgAccess();
+        url = appTrello.getUrlAPIbase() + "actions/" + idAction + "/card?" + appTrello.getArgAccess();
         System.out.println(url);
         HTTP http = new HTTP(url);
         JSONObject jsonO;
@@ -136,7 +141,7 @@ public class CardMethods extends AppTrello{
      * @see https://trello.com/docs/api/card/index.html#get-1-cards-card-id-or-shortlink
      */
     public CardElement getCard(String idCard) throws IOException, ParseException{
-        url = getUrlAPIbase() + "cards/" + idCard + "?" + getArgAccess();
+        url = appTrello.getUrlAPIbase() + "cards/" + idCard + "?" + appTrello.getArgAccess();
         System.out.println(url);
         HTTP http = new HTTP(url);
         JSONObject jsonO;
@@ -159,7 +164,7 @@ public class CardMethods extends AppTrello{
      * @see https://trello.com/docs/api/list/index.html#get-1-lists-idlist-cards
      */
     public List<CardElement> getCardsByIdList(String idList) throws IOException, ParseException{
-        url = getUrlAPIbase() + "lists/" + idList + "/cards?" + getArgAccess();
+        url = appTrello.getUrlAPIbase() + "lists/" + idList + "/cards?" + appTrello.getArgAccess();
         System.out.println(url);
         HTTP http = new HTTP(url);
         JSONArray jsona;
@@ -186,7 +191,7 @@ public class CardMethods extends AppTrello{
      * @see https://trello.com/docs/api/member/index.html#get-1-members-idmember-or-username-cards
      */
     public List<CardElement> getCardsByIdMember(String idMember) throws IOException, ParseException{
-        url = getUrlAPIbase() + "members/" + idMember + "/cards?" + getArgAccess();
+        url = appTrello.getUrlAPIbase() + "members/" + idMember + "/cards?" + appTrello.getArgAccess();
         System.out.println(url);
         HTTP http = new HTTP(url);
         JSONArray jsona;

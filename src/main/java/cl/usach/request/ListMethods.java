@@ -22,6 +22,11 @@ import org.json.JSONObject;
  */
 public class ListMethods extends AppTrello{
     String url;
+    AppTrello appTrello;
+    
+    public ListMethods(AppTrello appTrello){
+        this.appTrello = appTrello;
+    }
     
     /**
      * Obtiene una lista de elementos a través del identificador del tablero
@@ -31,7 +36,7 @@ public class ListMethods extends AppTrello{
      * @see https://trello.com/docs/api/board/index.html#get-1-boards-board-id-lists
      */
     public List<ListElement> getLists(String idBoard) throws IOException{
-        url = getUrlAPIbase() + "boards/" + idBoard + "/lists?" + getArgAccess();
+        url = appTrello.getUrlAPIbase() + "boards/" + idBoard + "/lists?" + appTrello.getArgAccess();
         System.out.println(url);
         HTTP http = new HTTP(url);
         JSONArray jsona;
@@ -57,7 +62,7 @@ public class ListMethods extends AppTrello{
      * @see https://trello.com/docs/api/card/index.html#get-1-cards-card-id-or-shortlink-list
      */
     public ListElement getListByIdCard(String idCard) throws IOException{
-        url = getUrlAPIbase() + "cards/" + idCard + "/list?" + getArgAccess();
+        url = appTrello.getUrlAPIbase() + "cards/" + idCard + "/list?" + appTrello.getArgAccess();
         System.out.println(url);
         HTTP http = new HTTP(url);
         JSONObject jsonO;
@@ -81,7 +86,7 @@ public class ListMethods extends AppTrello{
      * @see https://trello.com/docs/api/list/index.html#get-1-lists-idlist
      */
     public ListElement getList(String idList) throws IOException{
-        url = getUrlAPIbase() + "lists/" + idList + "?" + getArgAccess();
+        url = appTrello.getUrlAPIbase() + "lists/" + idList + "?" + appTrello.getArgAccess();
         System.out.println(url);
         HTTP http = new HTTP(url);
         JSONObject jsonO;
